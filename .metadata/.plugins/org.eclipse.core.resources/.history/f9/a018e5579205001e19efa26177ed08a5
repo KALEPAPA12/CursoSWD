@@ -1,0 +1,33 @@
+package Scrips;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.After;
+
+public class MainScript {
+    private WebDriver driver;
+
+    @Before
+    public void setup() {
+        // Establecer la ubicación del archivo chromedriver.exe
+        System.setProperty("webdriver.chrome.driver", "./src/main/resources/chromedriver.exe");
+        
+        // Crear una instancia del navegador Chrome
+        driver = new ChromeDriver();
+    }
+
+    @Test
+    public void openAutomationPractice() {
+        driver.get("http://automationpractice.com");
+        // Agrega las aserciones o interacciones adicionales necesarias para las pruebas en "Automation Practice"
+    }
+
+    @After
+    public void teardown() {
+        // Cerrar el navegador
+        driver.quit();
+    }
+}
+

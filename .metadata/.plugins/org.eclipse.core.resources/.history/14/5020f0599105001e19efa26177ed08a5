@@ -1,0 +1,56 @@
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import Poms.AmazonPOM;
+import Poms.ArduinoPOM;
+import Poms.MercadoLibrePOM;
+import Poms.WikipediaPOM;
+import Poms.YouTubePOM;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.After;
+
+public class MainScript {
+    private WebDriver driver;
+    private YouTubePOM youtubePOM;
+    private AmazonPOM amazonPOM;
+    private ArduinoPOM arduinoPOM;
+    private WikipediaPOM wikipediaPOM;
+    private MercadoLibrePOM mercadoLibrePOM;
+
+    @Before
+    public void setup() {
+        // Establecer la ubicación del archivo chromedriver.exe
+        System.setProperty("webdriver.chrome.driver", "ruta_del_chromedriver.exe");
+        
+        // Crear una instancia del navegador Chrome
+        driver = new ChromeDriver();
+        
+        // Inicializar los objetos POM
+        youtubePOM = new YouTubePOM(driver);
+        amazonPOM = new AmazonPOM(driver);
+        arduinoPOM = new ArduinoPOM(driver);
+        wikipediaPOM = new WikipediaPOM(driver);
+        mercadoLibrePOM = new MercadoLibrePOM(driver);
+    }
+
+    @Test
+    public void openWebpages() {
+        youtubePOM.openYouTube();
+        amazonPOM.openAmazon();
+        arduinoPOM.openArduino();
+        wikipediaPOM.openWikipedia();
+        mercadoLibrePOM.openMercadoLibre();
+        
+        // Agrega las aserciones o interacciones adicionales necesarias para las pruebas
+    }
+
+    @After
+    public void teardown() {
+        // Cerrar el navegador
+        driver.quit();
+    }
+}
+
+

@@ -1,0 +1,17 @@
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class AmazonScript {
+    public static void main(String[] args) {
+        WebDriver driver = new ChromeDriver();
+
+        AmazonPOM amazonPOM = new AmazonPOM(driver);
+    amazonPOM.navigateToAmazon();
+        amazonPOM.searchProduct("celulares");
+      amazonPOM.clickOnProductLink(0);
+        String productName = amazonPOM.getProductName();
+     System.out.println("El nombre del producto es: " + productName);
+
+        driver.quit();
+    }
+}

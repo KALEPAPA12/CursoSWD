@@ -1,0 +1,26 @@
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class AmazonScript {
+    public static void main(String[] args) {
+        // Establecer la ubicación del archivo chromedriver.exe
+        System.setProperty("webdriver.chrome.driver", "ruta/al/chromedriver.exe");
+
+        // Crear una instancia del WebDriver
+        WebDriver driver = new ChromeDriver();
+
+        // Crear una instancia del POM de Amazon
+        AmazonPOM amazonPOM = new AmazonPOM(driver);
+
+        // Abrir el sitio web de Amazon
+        amazonPOM.open();
+
+        // Realizar una búsqueda de un producto específico
+        amazonPOM.searchProduct("iPhone");
+
+        // Realizar más acciones en el sitio web de Amazon si es necesario
+
+        // Cerrar el navegador
+        driver.quit();
+    }
+}

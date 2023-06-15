@@ -1,0 +1,12 @@
+package Poms;
+public class YouTubePOM {
+    private WebDriver driver;
+    
+    public YouTubePOM(WebDriver driver) {
+        this.driver = driver;
+    }
+    
+    public void openYouTube() {
+        driver.get("https://www.youtube.com");
+    }
+}

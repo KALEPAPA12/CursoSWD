@@ -1,0 +1,20 @@
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class AmazonExample {
+    public static void main(String[] args) {
+        // Establecer la ubicación del archivo chromedriver.exe
+        System.setProperty("webdriver.chrome.driver", "ruta/al/chromedriver.exe");
+
+        // Crear una instancia del WebDriver
+        WebDriver driver = new ChromeDriver();
+
+        // Abrir el sitio web de Amazon
+        driver.get("https://www.amazon.com/");
+
+        // Realizar alguna interacción o acción en el sitio web de Amazon
+
+        // Cerrar el navegador
+        driver.quit();
+    }
+}

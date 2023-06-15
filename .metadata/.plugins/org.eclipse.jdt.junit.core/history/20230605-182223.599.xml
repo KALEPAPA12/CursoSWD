@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="Sesion2 (1)" project="Sesion2" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="Scrips.Sesion2" time="10.17">
+    <testcase name="test" classname="Scrips.Sesion2" time="10.17"/>
+  </testsuite>
+</testrun>

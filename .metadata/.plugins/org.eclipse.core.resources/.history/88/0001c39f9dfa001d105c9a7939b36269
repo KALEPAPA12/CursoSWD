@@ -1,0 +1,33 @@
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class AmazonScript {
+    private WebDriver driver;
+    private AmazonPOM AmazonPOM;
+
+    @Before
+    public void setup() {
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\User\\Downloads\\chrome 2");
+     driver = new ChromeDriver();
+        AmazonPOM = new AmazonPOM(driver);
+    }
+
+    @Test
+    public void testAmazonProductSearch() {      
+        AmazonPOM.navigateToAmazon();
+     AmazonPOM.searchProduct("celulares");
+
+      AmazonPOM.clickOnProductLink(0);
+
+        String productName = AmazonPOM.getProductName();
+        System.out.println("El nombre del producto es: " + productName);
+    }
+
+    @After
+    public void cleanup() {
+        driver.quit();
+    }
+}

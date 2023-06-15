@@ -1,0 +1,63 @@
+package Poms;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class YouTubePage {
+    private WebDriver driver;
+    
+    public YouTubePage(WebDriver driver) {
+        this.driver = driver;
+    }
+    
+    public void openYouTube() {
+        driver.get("https://www.youtube.com");
+    }
+}
+
+public class AmazonPage {
+    private WebDriver driver;
+    
+    public AmazonPage(WebDriver driver) {
+        this.driver = driver;
+    }
+    
+    public void openAmazon() {
+        driver.get("https://www.amazon.com");
+    }
+}
+
+public class ArduinoPage {
+    private WebDriver driver;
+    
+    public ArduinoPage(WebDriver driver) {
+        this.driver = driver;
+    }
+    
+    public void openArduino() {
+        driver.get("https://www.arduino.cc");
+    }
+}
+
+public class WikipediaPage {
+    private WebDriver driver;
+    
+    public WikipediaPage(WebDriver driver) {
+        this.driver = driver;
+    }
+    
+    public void openWikipedia() {
+        driver.get("https://www.wikipedia.org");
+    }
+}
+
+public class MercadoLibrePage {
+    private WebDriver driver;
+    
+    public MercadoLibrePage(WebDriver driver) {
+        this.driver = driver;
+    }
+    
+    public void openMercadoLibre() {
+        driver.get("https://www.mercadolibre.com");
+    }
+}

@@ -1,0 +1,52 @@
+package Scrips;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+public class AmazonScript {
+    private WebDriver driver;
+    private Poms.AmazonPOM AmazonPOM;
+
+    @Before
+    public void setup() {
+    	ChromeOptions options = new ChromeOptions();
+		options.addArguments("--remote-allow-origins=*");
+        System.setProperty("webdriver.chrome.driver", "./src/main/resources/chromedriver.exe");
+     driver = new ChromeDriver(options);
+        AmazonPOM = new Poms.AmazonPOM(driver);
+    }
+
+    @Test
+    public void testAmazonProductSearch() {
+        // Navegar a Amazon
+        AmazonPOM.navigateToAmazon();
+
+        // Realizar una búsqueda de celulares
+        AmazonPOM.searchProduct("celulares");
+
+        // Hacer clic en el primer producto en los resultados de búsqueda de celulares
+        AmazonPOM.clickOnProductLink(0);
+
+        // Obtener el nombre del producto
+        String productName = AmazonPOM.getProductName();
+        System.out.println("El nombre del producto es: " + productName);
+
+        // Realizar una búsqueda específica de Samsung
+        AmazonPOM.searchProduct("Samsung");
+
+        // Hacer clic en el primer producto en los resultados de búsqueda de Samsung
+        AmazonPOM.clickOnProductLink(0);
+
+        // Obtener el nombre del celular Samsung más barato
+        String cheapestSamsungProductName = AmazonPOM.getProductName();
+        System.out.println("El celular Samsung más barato es: " + cheapestSamsungProductName);
+    }
+
+    @After
+    public void cleanup() {
+        driver.quit();
+    }
+}

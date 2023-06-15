@@ -1,0 +1,29 @@
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class OpenWebpagesScript {
+    public static void main(String[] args) {
+        // Establecer la ubicación del archivo chromedriver.exe
+        System.setProperty("webdriver.chrome.driver", "ruta_del_chromedriver.exe");
+        
+        // Crear una instancia del navegador Chrome
+        WebDriver driver = new ChromeDriver();
+        
+        // Crear instancias de los POMs
+        YouTubePOM youTubePOM = new YouTubePOM(driver);
+        AmazonPOM amazonPOM = new AmazonPOM(driver);
+        ArduinoPOM arduinoPOM = new ArduinoPOM(driver);
+        WikipediaPOM wikipediaPOM = new WikipediaPOM(driver);
+        MercadoLibrePOM mercadoLibrePOM = new MercadoLibrePOM(driver);
+        
+        // Abrir las páginas web
+        youTubePOM.openYouTube();
+        amazonPOM.openAmazon();
+        arduinoPOM.openArduino();
+        wikipediaPOM.openWikipedia();
+        mercadoLibrePOM.openMercadoLibre();
+        
+        // Cerrar el navegador
+        driver.quit();
+    }
+}

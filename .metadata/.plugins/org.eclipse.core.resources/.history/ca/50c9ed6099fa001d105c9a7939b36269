@@ -1,0 +1,31 @@
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class AmazonScript {
+    public static void main(String[] args) {
+        // Establecer la ubicación del archivo chromedriver.exe
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\User\\Downloads\\chrome 2");
+
+        // Crear una instancia del WebDriver
+        WebDriver driver = new ChromeDriver();
+
+        // Crear una instancia del POM de Amazon
+        AmazonPOM amazonPOM = new AmazonPOM(driver);
+
+        // Navegar a Amazon
+        amazonPOM.navigateToAmazon();
+
+        // Realizar una búsqueda de producto
+        amazonPOM.searchProduct("celulares");
+
+        // Hacer clic en el primer producto en los resultados de búsqueda
+        amazonPOM.clickOnProductLink(0);
+
+        // Obtener el nombre del producto
+        String productName = amazonPOM.getProductName();
+        System.out.println("El nombre del producto es: " + productName);
+
+        // Cerrar el navegador
+        driver.quit();
+    }
+}

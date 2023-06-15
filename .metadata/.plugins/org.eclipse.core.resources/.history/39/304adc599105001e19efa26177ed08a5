@@ -1,0 +1,33 @@
+package Scrips;
+import org.openqa.selenium.WebDriver;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import Poms.AmazonPOM;
+import Poms.ArduinoPOM;
+import Poms.MercadoLibrePOM;
+import Poms.WikipediaPOM;
+import Poms.YouTubePOM;
+
+
+public class OpenWebpagesScript {
+    public static void main(String[] args) {
+        System.setProperty("webdriver.chrome.driver", "./src/main/resources/chromedriver.exe"); WebDriver driver = new ChromeDriver();
+
+
+        
+      YouTubePOM youtubePOM = new YouTubePOM(driver);
+       AmazonPOM amazonPOM = new AmazonPOM(driver);
+     ArduinoPOM arduinoPOM = new ArduinoPOM(driver);
+   WikipediaPOM wikipediaPOM = new WikipediaPOM(driver);
+        MercadoLibrePOM mercadoLibrePOM = new MercadoLibrePOM(driver);
+
+        youtubePOM.openYouTube();        amazonPOM.openAmazon();
+        arduinoPOM.openArduino();        wikipediaPOM.openWikipedia();
+        mercadoLibrePOM.openMercadoLibre();
+
+   
+        driver.quit();
+    }
+}
+

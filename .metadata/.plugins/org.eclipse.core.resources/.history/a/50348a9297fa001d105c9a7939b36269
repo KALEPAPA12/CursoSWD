@@ -1,0 +1,61 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import java.util.List;
+
+public class AmazonPOM {
+    @FindBy(id = "twotabsearchtextbox")
+    private WebElement searchBox;
+
+    @FindBy(className = "nav-input")
+    private WebElement searchButton;
+
+    @FindBy(xpath = "//span[@class='a-price-whole']")
+    private List<WebElement> priceElements;
+
+    @FindBy(xpath = "//span[@class='a-price-symbol']")
+    private WebElement currencySymbolElement;
+
+    @FindBy(xpath = "//span[@class='a-price-symbol']//following-sibling::span[@class='a-price-whole']")
+    private List<WebElement> priceSymbols;
+
+    private WebDriver driver;
+
+    public AmazonPOM(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+    }
+
+    public void searchProduct(String product) {
+        searchBox.sendKeys(product);
+        searchButton.click();
+    }
+
+    public void clickOnSamsung() {
+        driver.findElement(By.partialLinkText("Samsung")).click();
+    }
+
+    public void printCheapestPhoneName() {
+        String cheapestPrice = priceElements.get(0).getText();
+        String cheapestCurrencySymbol = currencySymbolElement.getText();
+
+        for (int i = 1; i < priceElements.size(); i++) {
+            String currentPrice = priceElements.get(i).getText();
+            String currentCurrencySymbol = priceSymbols.get(i - 1).getText();
+
+            if (currentPrice.compareTo(cheapestPrice) < 0) {
+                cheapestPrice = currentPrice;
+                cheapestCurrencySymbol = currentCurrencySymbol;
+            }
+        }
+
+        WebElement cheapestPhoneElement = driver.findElement(By.xpath("//span[@class='a-price-whole'][text()='" + cheapestPrice + "']//preceding::span[@class='a-size-medium a-color-base a-text-normal'][1]"));
+        String cheapestPhoneName = cheapestPhoneElement.getText();
+
+        System.out.println("El celular más barato es: " + cheapestPhoneName + " - Precio: " + cheapestCurrencySymbol + cheapestPrice);
+    }
+}

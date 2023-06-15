@@ -1,0 +1,49 @@
+package Poms;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class AmazonPOM {
+    private WebDriver driver;
+
+    public AmazonPOM(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    public void navigateToAmazon() {
+        driver.get("https://www.amazon.com/");
+    }
+
+    public void searchProduct(String productName) {
+        WebElement searchBox = driver.findElement(By.id("twotabsearchtextbox"));
+        searchBox.sendKeys(productName);
+        searchBox.submit();
+    }
+
+    public void clickOnProductLink(int productIndex) {
+        String xpathExpression = String.format("//div[@data-index='%d']//a[contains(@class, 'a-link-normal')]", productIndex);
+        WebElement productLink = driver.findElement(By.xpath(xpathExpression));
+        productLink.click();
+    }
+
+    public String getProductName() {
+        WebElement productNameElement = driver.findElement(By.id("productTitle"));
+        return productNameElement.getText();
+    }
+
+	public void sortByPriceLowToHigh() {
+	}
+
+	public void clickOnOptionLink(String string) {
+	
+	}
+
+	public void clickOnCategoryLink(String string) {
+	
+	}
+
+	public void openAmazon() {
+		// TODO Auto-generated method stub
+		
+	}
+}
